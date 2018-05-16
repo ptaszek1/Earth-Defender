@@ -35,21 +35,40 @@ $(function () {
             $(".bullet").each(function() {
                 let top = $(this).offset().top;
                 $(this).css({
-                    top: top - 10,
+                    top: top - 15,
             });
                 if($(this).offset().top < -10){
                     $(this).remove()
                 }
             });
         }
-        setInterval(update, 25);
+        setInterval(update, 15);
 
-        
         
         
         function asteroid() {
-
+            $galaxy.append($("<div>").addClass("asteroid").css({
+                top: 10,
+                left: Math.floor((Math.random() * 1300) + 1),
+            }));
         }
+        setInterval(asteroid,1500);
+
+        function moveAsteroid() {
+            setInterval(function () {
+                $('.asteroid').each(function () {
+                    let top = $(this).offset().top;
+                    $(this).css({
+                        top: top + 4,
+                    })
+                    if($(this).offset().top > 1000){
+                        $(this).remove()
+                    }
+                })
+            })
+        }
+
+        setInterval(moveAsteroid,20)
         
         
 
