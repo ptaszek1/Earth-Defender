@@ -8,22 +8,20 @@ $(function () {
             });
         });
 
+        let $galaxy = $('.galaxy')
+
 
         function fire() {
-            $(".galaxy").append($("<div>").addClass("bullet").css({
-                top: 900,
-                left: $('.ship').offset().left+50,
+            $galaxy.append($("<div>").addClass("bullet").css({
+                top: 850,
+                left: $('.ship').offset().left+10,
+            }));
+            $galaxy.append($("<div>").addClass("bullet").css({
+                top: 850,
+                left: $('.ship').offset().left+76,
             }));
         }
         $(document).click(fire);
-
-        let $pos = 0;
-
-        function shipPos() {
-            console.log(arr1[count]);
-            return arr1[count]
-        }
-
 
         function update() {
             $(".bullet").each(function() {
