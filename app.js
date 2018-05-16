@@ -2,13 +2,20 @@ $(function () {
     function game() {
 
 
+        // Ship follow the mouse
+
         $(document).on('mousemove', function (e) {
             $('.ship').css({
                 left: e.pageX - 50,
             });
         });
 
-        let $galaxy = $('.galaxy')
+        let $galaxy = $('.galaxy');
+
+        function playSound() {
+            var sound = document.getElementById("audio");
+            sound.play();
+        }
 
 
         function fire() {
@@ -20,6 +27,7 @@ $(function () {
                 top: 850,
                 left: $('.ship').offset().left+76,
             }));
+            playSound()
         }
         $(document).click(fire);
 
@@ -36,6 +44,14 @@ $(function () {
         }
         setInterval(update, 25);
 
+        
+        
+        
+        function asteroid() {
+
+        }
+        
+        
 
     }
 
