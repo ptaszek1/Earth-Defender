@@ -7,7 +7,7 @@ $(function () {
                 left: e.pageX - 50,
             });
         });
-        
+
         let $pos = 0;
 
         function fire() {
@@ -25,7 +25,7 @@ $(function () {
                 let top = $(this).offset().top;
                 $(this).css({
                     top: top - 20,
-                    left: $pos,
+                    left: $('.ship').offset().left,
             });
                 if($(this).offset().top < -10){
                     $(this).remove()
