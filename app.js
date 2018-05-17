@@ -54,10 +54,20 @@ $(function () {
         }
         setInterval(asteroid,1500);
 
+
         function moveAsteroid() {
-            setInterval(function () {
                 $('.asteroid').each(function () {
                     let top = $(this).offset().top;
+                    let left = $(this).offset().left;
+                    if($(this).offset().left > 700){
+                        $(this).css({
+                            left: left -1
+                        })
+                    } else {
+                        $(this).css({
+                            left: left +1
+                        })
+                    }
                     $(this).css({
                         top: top + 4,
                     })
@@ -65,7 +75,6 @@ $(function () {
                         $(this).remove()
                     }
                 })
-            })
         }
 
         setInterval(moveAsteroid,20)
