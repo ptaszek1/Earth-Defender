@@ -2,8 +2,6 @@ $(function () {
     function game() {
 
 
-        // Ship follow the mouse
-
         $(document).on('mousemove', function (e) {
             $('.ship').css({
                 left: e.pageX - 50,
@@ -12,21 +10,20 @@ $(function () {
 
         let $galaxy = $('.galaxy');
 
-        //
 
         function playSound() {
-            var sound = document.getElementById("audio");
+            let sound = document.getElementById("audio");
             sound.play();
         }
 
 
         function fire() {
             $galaxy.append($("<div>").addClass("bullet").css({
-                top: 850,
+                top: 800,
                 left: $('.ship').offset().left+10,
             }));
             $galaxy.append($("<div>").addClass("bullet").css({
-                top: 850,
+                top: 800,
                 left: $('.ship').offset().left+76,
             }));
             playSound()
