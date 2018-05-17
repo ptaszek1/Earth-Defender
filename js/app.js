@@ -12,6 +12,8 @@ $(function () {
 
         let $galaxy = $('.galaxy');
 
+        //
+
         function playSound() {
             var sound = document.getElementById("audio");
             sound.play();
@@ -50,15 +52,14 @@ $(function () {
             let size = Math.floor((Math.random() * 150) + 30);
             $galaxy.append($("<div>").addClass("asteroid").css({
                 top: -100,
-                left: Math.floor((Math.random() * 1300) + 1),
+                left: Math.floor((Math.random() * 100) + 1) +'%',
                 width: size,
                 height: size,
             }));
         }
         setInterval(asteroid,500);
 
-
-        let randomSpeed = Math.floor((Math.random() * 20) + 5);
+        let topPos = 4;
 
         function moveAsteroid() {
                 $('.asteroid').each(function () {
@@ -74,7 +75,7 @@ $(function () {
                         })
                     }
                     $(this).css({
-                        top: top + 4,
+                        top: top + topPos,
                     });
                     if($(this).offset().top > 1000){
                         $(this).remove()
@@ -82,7 +83,25 @@ $(function () {
                 });
             collision()
         }
-        setInterval(moveAsteroid,randomSpeed);
+        setInterval(moveAsteroid,40);
+
+
+        let $scoreScore = 0;
+        let $stageScore = 1;
+        var $destroyedScore = 1;
+
+        function countScore() {
+            $destroyedScore+=1;
+            $scoreScore += 10;
+            if($destroyedScore % 25 === 0){
+                $stageScore +=1;
+                topPos+=1;
+                moveAsteroid()
+            }
+            $('.destroyed span').text($destroyedScore);
+            $('.score span').text($scoreScore);
+            $('.stage span').text($stageScore);
+        }
 
 
 
@@ -93,8 +112,9 @@ $(function () {
             if(list.length > 0){
                 list.remove();
                 list2.remove();
+                countScore()
             } else if (list3.length > 0){
-                console.log('Game over')
+
             }
         }
         

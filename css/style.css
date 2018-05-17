@@ -2,6 +2,9 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+-webkit-user-select:none;-moz-user-select:-moz-none;
+    -ms-user-select:none;user-select:none;
+    box-sizing: border-box;
 }
 input {
     margin-left: 100px;
@@ -21,12 +24,11 @@ input {
     width: 300px;
     height: 300px;
     position: absolute;
-    bottom: 10%;
+    bottom: 15%;
     left: 40%;
     border-radius: 50%;
     transform: rotate(360deg);
     animation: rotating 2s linear infinite;
-    border: 2px solid red;
 }
 .ship {
     background-image: url("../img/ship3.png");
@@ -35,9 +37,8 @@ input {
     height: 70px;
     position: absolute;
     left: 43%;
-    bottom: 10%;
+    bottom: 15%;
     z-index: 1;
-    border: 2px solid red;
 }
 .asteroid {
     background-image: url("../img/asteroid2.png");
@@ -45,19 +46,36 @@ input {
     height: auto;
     position: absolute;
     border-radius: 50%;
-    border: 2px solid red;
     padding: -20px;
 }
 
 .bullet {
     width: 4px;
     height: 25px;
-    background-color: red;
     position: absolute;
+    background-color: red;
 }
 .box {
     position: absolute;
 }
+.board {
+    position: absolute;
+    color: #fff;
+    bottom: 5%;
+    display: flex;
+    justify-content: center;
+    -webkit-box-shadow: inset 6px -7px 59px 0px rgba(255,255,255,1);
+    -moz-box-shadow: inset 6px -7px 59px 0px rgba(255,255,255,1);
+    box-shadow: inset 6px -7px 59px 0px rgba(255,255,255,1);
+}
+.board li{
+    padding: 20px;
+    list-style: none;
+}
+
+
+
+
 @keyframes speed {
 0%{transform: rotate(0deg)}
 100%{transform: rotate(360deg)}

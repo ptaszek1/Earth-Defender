@@ -7,21 +7,20 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="app.js"></script>
+    <script src="js/app.js"></script>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 <div class="galaxy">
+    <div class="board">
+        <li class="stage"><h2>Stage:<span>&nbsp;1</span></h2></li>
+        <li class="score"><h2>Score:<span>&nbsp;0</span></h2></li>
+        <li class="destroyed"><h2>Asteroid Destroyed:<span>&nbsp;0</span></h2></li>
+    </div>
     <audio src="sound/laser-shot2.wav" id="audio"></audio>
-    <div class="box">
-
-    </div>
     <div class="earth"></div>
-    <div class="ship">
-
-    </div>
-    <div class="asteroid"></div>
+    <div class="ship"></div>
 </div>
-<script src="jquery-collision.min.js"></script>
+<script src="js/jquery-collision.min.js"></script>
 </body>
 </html>
