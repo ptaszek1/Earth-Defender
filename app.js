@@ -49,13 +49,13 @@ $(function () {
         function asteroid() {
             let size = Math.floor((Math.random() * 300) + 60);
             $galaxy.append($("<div>").addClass("asteroid").css({
-                top: -30,
+                top: -100,
                 left: Math.floor((Math.random() * 1300) + 1),
                 width: size,
                 height: size,
             }));
         }
-        setInterval(asteroid,1300);
+        setInterval(asteroid,500);
 
 
         function moveAsteroid() {
@@ -73,14 +73,28 @@ $(function () {
                     }
                     $(this).css({
                         top: top + 4,
-                    })
+                    });
                     if($(this).offset().top > 1000){
                         $(this).remove()
                     }
-                })
+                });
+            collision()
         }
+        setInterval(moveAsteroid,20);
 
-        setInterval(moveAsteroid,20)
+
+
+        function collision() {
+            let list = $('.bullet').collision('.asteroid');
+            let list2 = $('.asteroid').collision('.bullet')
+            let list3 = $('.earth').collision('.asteroid');
+            if(list.length > 0){
+                list.remove();
+                list2.remove();
+            } else if (list3.length > 0){
+                console.log('Game over')
+            }
+        }
         
         
 
@@ -89,4 +103,4 @@ $(function () {
     game()
 
 
-})
+});
