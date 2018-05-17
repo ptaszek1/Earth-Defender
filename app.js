@@ -47,12 +47,15 @@ $(function () {
         
         
         function asteroid() {
+            let size = Math.floor((Math.random() * 300) + 60);
             $galaxy.append($("<div>").addClass("asteroid").css({
-                top: 10,
+                top: -30,
                 left: Math.floor((Math.random() * 1300) + 1),
+                width: size,
+                height: size,
             }));
         }
-        setInterval(asteroid,1500);
+        setInterval(asteroid,1300);
 
 
         function moveAsteroid() {

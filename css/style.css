@@ -41,10 +41,10 @@ input {
     background-image: url("../img/asteroid.png");
     background-size: cover;
     width: 90px;
-    height: 70px;
+    height: auto;
+    object-fit: contain;
     position: absolute;
     border-radius: 50%;
-    transform: rotate(360deg);
     animation: 10s speed infinite;
 }
 /*@keyframes speed {*/
