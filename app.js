@@ -47,7 +47,7 @@ $(function () {
         
         
         function asteroid() {
-            let size = Math.floor((Math.random() * 300) + 60);
+            let size = Math.floor((Math.random() * 150) + 30);
             $galaxy.append($("<div>").addClass("asteroid").css({
                 top: -100,
                 left: Math.floor((Math.random() * 1300) + 1),
@@ -57,6 +57,8 @@ $(function () {
         }
         setInterval(asteroid,500);
 
+
+        let randomSpeed = Math.floor((Math.random() * 20) + 5);
 
         function moveAsteroid() {
                 $('.asteroid').each(function () {
@@ -80,7 +82,7 @@ $(function () {
                 });
             collision()
         }
-        setInterval(moveAsteroid,20);
+        setInterval(moveAsteroid,randomSpeed);
 
 
 

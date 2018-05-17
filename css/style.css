@@ -40,12 +40,13 @@ input {
     border: 2px solid red;
 }
 .asteroid {
-    background-image: url("../img/asteroid.png");
+    background-image: url("../img/asteroid2.png");
     background-size: cover;
     height: auto;
     position: absolute;
     border-radius: 50%;
     border: 2px solid red;
+    padding: -20px;
 }
 
 .bullet {
