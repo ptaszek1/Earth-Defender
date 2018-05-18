@@ -54,6 +54,10 @@ input {
     height: 25px;
     position: absolute;
     background-color: red;
+    border-radius: 30% 30% 0 0;
+    -webkit-box-shadow: 0px 3px 20px 0px rgba(255,0,0,0.81);
+    -moz-box-shadow: 0px 3px 20px 0px rgba(255,0,0,0.81);
+    box-shadow: 0px 3px 20px 0px rgba(255,0,0,0.81);
 }
 .box {
     position: absolute;
@@ -179,3 +183,33 @@ input {
         transform: rotateY(720deg);
     }
 }
+.hide {
+    display: none;
+}
+
+.main-menu {
+    border: 1px solid black;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    list-style: none;
+    position: relative;
+}
+.main-menu ul {
+    position: absolute;
+}
+.main-menu li{
+    list-style: none;
+    padding: 30px 0 0 0;
+}
+.main-menu button{
+    width: 150px;
+    height: 70px;
+}
+.main-menu video{
+    padding: 0;
+    margin: 0;
+    width: 100vw;
+    height: auto;
+}
+
