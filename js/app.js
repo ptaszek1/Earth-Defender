@@ -1,6 +1,10 @@
 $(function () {
+
+    // Start Game function
+
     function game() {
 
+        // Ship follow mouse on window
 
         $(document).on('mousemove', function (e) {
             $('.ship').css({
@@ -9,15 +13,10 @@ $(function () {
         });
 
         let $galaxy = $('.galaxy');
-
-
-        function playSound() {
-            let sound = document.getElementById("audio");
-            sound.play();
-        }
-
         let $bulletWidth = 4;
         let $bulletHeight = 25;
+
+        // Start fire position
 
         function fire() {
             $galaxy.append($("<div>").addClass("bullet").css({
@@ -34,8 +33,9 @@ $(function () {
             }));
             playSound()
         }
-
         $(document).click(fire);
+
+        // Bullet moves
 
         function update() {
             $(".bullet").each(function () {
@@ -48,9 +48,9 @@ $(function () {
                 }
             });
         }
-
         setInterval(update, 15);
 
+        // Create asteroids in random top position
 
         function asteroid() {
             let size = Math.floor((Math.random() * 150) + 30);
@@ -61,8 +61,9 @@ $(function () {
                 height: size,
             }));
         }
-
         setInterval(asteroid, 500);
+
+        // Move asteroids from top to down
 
         let topPos = 4;
 
@@ -88,13 +89,15 @@ $(function () {
             });
             collision();
         }
-
         setInterval(moveAsteroid, 40);
 
+        // Score, Stage , Destroyed counters
 
         let $scoreScore = 0;
         let $stageScore = 1;
         let $destroyedScore = 1;
+
+        // Score Counter
 
         function countScore() {
             $destroyedScore += 1;
@@ -109,6 +112,8 @@ $(function () {
             $('.stage span').text($stageScore);
         }
 
+
+        // Collision function , detect all collisions in game
 
         function collision() {
             let list = $('.bullet').collision('.asteroid');
@@ -148,31 +153,22 @@ $(function () {
             }
         }
 
+        // Random elements variables
+
         let $randomUFO = Math.floor((Math.random() * 15000) + 4000);
         let $randomDollar = Math.floor((Math.random() * 60000) + 1000);
         let $randomTimer = Math.floor((Math.random() * 60000) + 1000);
         let $randomWeapone = Math.floor((Math.random() * 60000) + 1000);
 
-        // UFO sound Start
-
-        function ufoSound() {
-            let sound = document.getElementById("audio-ufo");
-            sound.play();
-        }
-
-        // UFO sound stop (if destroyed)
-
-        function stopUfoSound() {
-            let sound = document.getElementById("audio-ufo");
-            sound.pause();
-        }
+        // Randomly Create UFO on map (1000 points if hit)
 
         function createUfo() {
             $('.ufo-move').append($('<div>').addClass('ufo'))
             ufoSound()
         }
-
         setTimeout(createUfo, $randomUFO);
+
+        // Randomly drop dollar bonus (+200 points)
 
         function bonusDollar() {
             $('.bonuses').append($('<div>').addClass('dollar').css({
@@ -182,6 +178,8 @@ $(function () {
 
         setTimeout(bonusDollar, $randomDollar);
 
+        // Randomly drop timer bonus (-1)
+
         function bonusTimer() {
             $('.bonuses').append($('<div>').addClass('timer').css({
                 left: Math.floor((Math.random() * 100) + 1) + '%',
@@ -190,18 +188,23 @@ $(function () {
 
         setTimeout(bonusTimer, $randomTimer);
 
+
+        // Randomly drop weapone bonus
+
         function bonusWeapone() {
             $('.bonuses').append($('<div>').addClass('better-bullets').css({
                 left: Math.floor((Math.random() * 100) + 1) + '%',
             }))
         }
-
         setTimeout(bonusWeapone, $randomWeapone)
 
 
     }
 
-    // Out of game function
+    // Out of game functions
+
+
+    // Start game button
 
     $('#start-game').on('click', function () {
         $('.galaxy').removeClass('hide');
@@ -213,7 +216,7 @@ $(function () {
     });
 
 
-    // Menu elements below
+    // Menu elements
 
     const $firstUl = $('.main-menu .first-ul');
     const $secondUl = $('.main-menu .second-ul');
@@ -246,18 +249,23 @@ $(function () {
         $firstUl.removeClass('hide');
     });
 
+    // Sound Variables
+
+    let $myAudio = document.getElementById("music");
+    let $clickSound = document.getElementById("audio-click");
+    let $collectSound = document.getElementById("coin-audio");
+    let $UfoSound = document.getElementById("audio-ufo");
+    let $bulletSound = document.getElementById("audio");
+    let $musicBtn = $('.music-on-off');
 
     // Settings turn on or turn off background music
 
-    let myAudio = document.getElementById("music");
-    let $musicBtn = $('.music-on-off');
-
-    $musicBtn.on('click',function togglePlay() {
-        if(myAudio.paused) {
-            myAudio.play();
+    $musicBtn.on('click',function () {
+        if($myAudio.paused) {
+            $myAudio.play();
             $musicBtn.text('MUSIC ON').css('color','#60daaa')
         } else {
-            myAudio.pause();
+            $myAudio.pause();
             $musicBtn.text('MUSIC OFF').css('color','red')
         }
     });
@@ -265,28 +273,47 @@ $(function () {
     // Settings change volume of music
 
     $('.range').on('input',function () {
-        myAudio.volume = $(this).val() / 100;
+        $myAudio.volume = $(this).val() / 100;
+        $clickSound.volume =  $(this).val() / 100;
+        $collectSound.volume =  $(this).val() / 100;
+        $UfoSound.volume =  $(this).val() / 100;
     });
+
+    // Bullets sound
+
+    function playSound() {
+        $bulletSound.play();
+    }
+
+    // UFO sound Start
+
+    function ufoSound() {
+        $UfoSound.play();
+    }
+
+    // UFO sound stop (if destroyed)
+
+    function stopUfoSound() {
+        $UfoSound.pause();
+    }
 
     // Pause the music
 
     function stopMusic() {
-        myAudio.pause();
+        $myAudio.pause();
     }
 
     // Button sounds
 
     function playClick() {
-        let sound = document.getElementById("audio-click");
-        sound.play();
+        $clickSound.play();
     }
     $('button').on('click',playClick);
 
     // Bonuses collect sound
 
     function collectSound() {
-        let sound = document.getElementById("coin-audio");
-        sound.play();
+        $collectSound.play();
     }
 
 });
