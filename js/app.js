@@ -277,6 +277,7 @@ $(function () {
         $clickSound.volume =  $(this).val() / 100;
         $collectSound.volume =  $(this).val() / 100;
         $UfoSound.volume =  $(this).val() / 100;
+        $bulletSound.volume =  $(this).val() / 100;
     });
 
     // Bullets sound
