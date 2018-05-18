@@ -75,8 +75,38 @@ input {
 
 
 
+.ufo {
+    background-image: url("../img/sprites/ufo.png");
+    background-size: cover;
+    width: 100px;
+    height: 100px;
+    position: absolute;
+    border-radius: 50%;
+    animation: ufoMove 4s ease-out;
+    transition: 4s all;
+    z-index: 1;
+    right: 110%;
+}
 
-@keyframes speed {
-0%{transform: rotate(0deg)}
-100%{transform: rotate(360deg)}
+@keyframes ufoMove {
+    0%{
+        top: 0%;
+        right: 105%;
+    }
+    20%{
+        top: 10%;
+    }
+    40%{
+        top: 0%;
+    }
+    60%{
+        top: 10%;
+    }
+    80% {
+        top: 0%;
+    }
+    100%{
+        top: 10%;
+        right: -10%;
+    }
 }

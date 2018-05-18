@@ -106,14 +106,27 @@ $(function () {
             let list = $('.bullet').collision('.asteroid');
             let list2 = $('.asteroid').collision('.bullet')
             let list3 = $('.earth').collision('.asteroid');
+            let ufoCollision = $('.ufo-move').collision('.bullet');
             if(list.length > 0){
                 list.remove();
                 list2.remove();
                 countScore()
             } else if (list3.length > 0){
-
+                console.log('game over')
+            } else if (ufoCollision.length > 0) {
+                $scoreScore += 1000;
+                $('.ufo-move').remove();
+                countScore()
             }
         }
+
+        let $randomUFO =  Math.floor((Math.random() * 15000) + 4000)
+
+        function createUfo() {
+            $('.ufo-move').append('<div>').addClass('ufo')
+        }
+
+        setTimeout(createUfo,$randomUFO)
         
         
 
