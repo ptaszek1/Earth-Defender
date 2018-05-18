@@ -29,6 +29,7 @@
 
 <audio src="sound/collectcoin.wav" id="coin-audio"></audio>
 <audio src="sound/click.wav" id="audio-click"></audio>
+<audio src="sound/ufo.flac" id="audio-ufo"></audio>
 
 <audio autoplay loop id="music">
     <source src="sound/music.mp3" type="audio/mpeg">
@@ -58,13 +59,14 @@
     </ul>
     <ul class="second-ul hide">
         <li>
-            <button class="draw">MUSIC ON/OFF</button>
+            <button class="draw music-on-off">MUSIC ON</button>
         </li>
         <li>
             <button class="draw">SOUND ON/OFF</button>
         </li>
         <li>
-            <button class="draw">Volume</button>
+            <button class="draw">Volume</button><br>
+            <input type="range" class="range" value="50" maxlength="100">
         </li>
         <li>
             <button id="back" class="draw">Go Back</button>

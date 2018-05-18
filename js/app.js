@@ -128,6 +128,7 @@ $(function () {
                 $scoreScore += 1000;
                 $('.ufo-move').remove();
                 countScore();
+                stopUfoSound()
             } else if (dollar.length > 0) {
                 $('.dollar').remove();
                 $scoreScore += 200;
@@ -152,8 +153,23 @@ $(function () {
         let $randomTimer = Math.floor((Math.random() * 60000) + 1000);
         let $randomWeapone = Math.floor((Math.random() * 60000) + 1000);
 
+        // UFO sound Start
+
+        function ufoSound() {
+            let sound = document.getElementById("audio-ufo");
+            sound.play();
+        }
+
+        // UFO sound stop (if destroyed)
+
+        function stopUfoSound() {
+            let sound = document.getElementById("audio-ufo");
+            sound.pause();
+        }
+
         function createUfo() {
             $('.ufo-move').append($('<div>').addClass('ufo'))
+            ufoSound()
         }
 
         setTimeout(createUfo, $randomUFO);
@@ -230,16 +246,43 @@ $(function () {
         $firstUl.removeClass('hide');
     });
 
+
+    // Settings turn on or turn off background music
+
+    let myAudio = document.getElementById("music");
+    let $musicBtn = $('.music-on-off');
+
+    $musicBtn.on('click',function togglePlay() {
+        if(myAudio.paused) {
+            myAudio.play();
+            $musicBtn.text('MUSIC ON').css('color','#60daaa')
+        } else {
+            myAudio.pause();
+            $musicBtn.text('MUSIC OFF').css('color','red')
+        }
+    });
+
+    // Settings change volume of music
+
+    $('.range').on('input',function () {
+        myAudio.volume = $(this).val() / 100;
+    });
+
+    // Pause the music
+
     function stopMusic() {
-        let sound = document.getElementById("music");
-        sound.pause();
+        myAudio.pause();
     }
+
+    // Button sounds
 
     function playClick() {
         let sound = document.getElementById("audio-click");
         sound.play();
     }
     $('button').on('click',playClick);
+
+    // Bonuses collect sound
 
     function collectSound() {
         let sound = document.getElementById("coin-audio");
