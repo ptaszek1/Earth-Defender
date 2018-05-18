@@ -132,14 +132,17 @@ $(function () {
                 $('.dollar').remove();
                 $scoreScore += 200;
                 countScore();
+                collectSound();
             } else if (timer.length > 0) {
                 $('.timer').remove();
                 topPos -= 1;
                 moveAsteroid();
+                collectSound();
             } else if (weapone.length > 0) {
                 $('.better-bullets').remove();
                 $bulletWidth += 3;
                 $bulletHeight += 2;
+                collectSound();
                 fire()
             }
         }
@@ -189,8 +192,12 @@ $(function () {
         $('.main-menu').css({
             display: 'none',
         });
+        stopMusic()
         game()
     });
+
+
+    // Menu elements below
 
     const $firstUl = $('.main-menu .first-ul');
     const $secondUl = $('.main-menu .second-ul');
@@ -223,5 +230,20 @@ $(function () {
         $firstUl.removeClass('hide');
     });
 
+    function stopMusic() {
+        let sound = document.getElementById("music");
+        sound.pause();
+    }
+
+    function playClick() {
+        let sound = document.getElementById("audio-click");
+        sound.play();
+    }
+    $('button').on('click',playClick);
+
+    function collectSound() {
+        let sound = document.getElementById("coin-audio");
+        sound.play();
+    }
 
 });
