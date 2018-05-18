@@ -192,7 +192,6 @@ input {
   display: flex;
   align-items: center;
   justify-content: left;
-  list-style: none;
   position: relative;
   video {
     width: 100vw;
@@ -204,7 +203,7 @@ input {
       list-style: none;
       padding: 30px 0 0 50px;
       button {
-        width: 150px;
+        width: 200px;
         height: 70px;
       }
     }
@@ -284,4 +283,36 @@ button {
             width 0.25s ease-out 0.5s,
             height 0.25s ease-out 0.75s;
   }
+}
+
+
+.table {
+  position: absolute;
+  text-align: center;
+  color: #fff;
+  border: 2px solid white;
+  padding: 10px;
+  margin-left: 100px;
+}
+.table button {
+  width: 100%;
+  position: absolute;
+}
+td, tr {
+  padding: 10px;
+}
+
+// Copyrights
+
+.copyright {
+  width: 300px;
+  height: auto;
+  text-align: justify;
+  position: absolute;
+  color: white;
+  font-weight: 700;
+  margin-left: 100px;
+}
+.copyright button {
+  margin-left: 80px;
 }

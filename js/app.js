@@ -182,7 +182,9 @@ $(function () {
 
     }
 
-    $('#start-game').on('click',function () {
+    // Out of game function
+
+    $('#start-game').on('click', function () {
         $('.galaxy').removeClass('hide');
         $('.main-menu').css({
             display: 'none',
@@ -190,6 +192,36 @@ $(function () {
         game()
     });
 
+    const $firstUl = $('.main-menu .first-ul');
+    const $secondUl = $('.main-menu .second-ul');
+    const $table = $('.table');
+    const $copyright = $('.copyright');
+
+    $('#settings').on('click', function () {
+        $firstUl.addClass('hide');
+        $secondUl.removeClass('hide');
+    });
+
+    $('#back').on('click', function () {
+        $firstUl.removeClass('hide');
+        $secondUl.addClass('hide');
+    });
+    $('#best-scores').on('click', function () {
+        $table.removeClass('hide');
+        $firstUl.addClass('hide');
+    });
+    $('.table-button').on('click', function () {
+        $table.addClass('hide');
+        $firstUl.removeClass('hide');
+    });
+    $('#copyright').on('click', function () {
+        $firstUl.addClass('hide');
+        $copyright.removeClass('hide');
+    });
+    $('.copyright-button').on('click',function () {
+        $copyright.addClass('hide');
+        $firstUl.removeClass('hide');
+    });
 
 
 });
