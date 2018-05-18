@@ -79,6 +79,7 @@ $(function () {
                     }
                 });
             collision()
+            console.log(topPos)
         }
         setInterval(moveAsteroid,40);
 
@@ -104,29 +105,68 @@ $(function () {
 
         function collision() {
             let list = $('.bullet').collision('.asteroid');
-            let list2 = $('.asteroid').collision('.bullet')
+            let list2 = $('.asteroid').collision('.bullet');
             let list3 = $('.earth').collision('.asteroid');
-            let ufoCollision = $('.ufo-move').collision('.bullet');
+            let ufoCollision = $('.ufo').collision('.bullet');
+            let dollar = $('.dollar').collision('.ship');
+            let timer = $('.timer').collision('.ship');
+            let weapone = $('.better-bullets').collision('.ship');
             if(list.length > 0){
                 list.remove();
                 list2.remove();
                 countScore()
             } else if (list3.length > 0){
-                console.log('game over')
+                // console.log('game over')
             } else if (ufoCollision.length > 0) {
                 $scoreScore += 1000;
                 $('.ufo-move').remove();
-                countScore()
+                countScore();
+            } else if (dollar.length > 0) {
+                $('.dollar').remove();
+                $scoreScore += 200;
+                countScore();
+            } else if (timer.length > 0){
+                $('.timer').remove();
+                topPos -= 1;
+                moveAsteroid();
+            } else if (weapone.length > 0) {
+                $('.better-bullets').remove()
             }
         }
 
-        let $randomUFO =  Math.floor((Math.random() * 15000) + 4000)
+        let $randomUFO =  Math.floor((Math.random() * 15000) + 4000);
+        let $randomDollar = Math.floor((Math.random() * 60000) + 1000);
+        let $randomTimer = Math.floor((Math.random() * 60000) + 1000);
+        let $randomWeapone = Math.floor((Math.random() * 60000) + 1000);
 
         function createUfo() {
-            $('.ufo-move').append('<div>').addClass('ufo')
+            $('.ufo-move').append($('<div>').addClass('ufo'))
+        }
+        setTimeout(createUfo,$randomUFO);
+
+        function bonusDollar() {
+            $('.bonuses').append($('<div>').addClass('dollar').css({
+                left: Math.floor((Math.random() * 100) + 1) +'%',
+            }))
         }
 
-        setTimeout(createUfo,$randomUFO)
+        setTimeout(bonusDollar,$randomDollar);
+
+        function bonusTimer() {
+            $('.bonuses').append($('<div>').addClass('timer').css({
+                left: Math.floor((Math.random() * 100) + 1) +'%',
+            }))
+        }
+
+        setTimeout(bonusTimer,$randomTimer);
+
+        function bonusWeapone() {
+            $('.bonuses').append($('<div>').addClass('better-bullets').css({
+                left: Math.floor((Math.random() * 100) + 1) +'%',
+            }))
+        }
+
+        setTimeout(bonusWeapone,$randomWeapone)
         
         
 

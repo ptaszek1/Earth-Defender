@@ -110,3 +110,72 @@ input {
         right: -10%;
     }
 }
+
+.dollar {
+    background-image: url("../img/bonuses/dollar.png");
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    animation: dollar 4s ease-out;
+    transition: 4s all;
+    z-index: 1;
+    top: -10%;
+}
+
+@keyframes dollar {
+    0%{
+        top: -10%;
+        transform: rotateY(0deg);
+    }
+    100% {
+        top: 110%;
+        transform: rotateY(720deg);
+    }
+}
+
+.timer {
+    background-image: url("../img/bonuses/timer.png");
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    animation: timer 4s ease-out;
+    transition: 4s all;
+    z-index: 1;
+    top: -10%;
+}
+
+@keyframes timer {
+    0%{
+        top: -10%;
+        transform: rotateY(0deg);
+    }
+    100% {
+        top: 110%;
+        transform: rotateY(720deg);
+    }
+}
+
+.better-bullets {
+    background-image: url("../img/bonuses/weapone.png");
+    background-size: cover;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    animation: bullets 4s ease-out;
+    transition: 4s all;
+    z-index: 1;
+    top: -10%;
+}
+
+@keyframes bullets {
+    0%{
+        top: -10%;
+        transform: rotateY(0deg);
+    }
+    100% {
+        top: 110%;
+        transform: rotateY(720deg);
+    }
+}
