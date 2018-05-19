@@ -33,6 +33,7 @@ $(function () {
             }));
             playSound()
         }
+
         $(document).click(fire);
 
         // Bullet moves
@@ -48,6 +49,7 @@ $(function () {
                 }
             });
         }
+
         setInterval(update, 15);
 
         // Create asteroids in random top position
@@ -61,6 +63,7 @@ $(function () {
                 height: size,
             }));
         }
+
         setInterval(asteroid, 500);
 
         // Move asteroids from top to down
@@ -89,6 +92,7 @@ $(function () {
             });
             collision();
         }
+
         setInterval(moveAsteroid, 40);
 
         // Score, Stage , Destroyed counters
@@ -129,6 +133,7 @@ $(function () {
                 countScore()
             } else if (list3.length > 0) {
                 // console.log('game over')
+
             } else if (ufoCollision.length > 0) {
                 $scoreScore += 1000;
                 $('.ufo-move').remove();
@@ -166,6 +171,7 @@ $(function () {
             $('.ufo-move').append($('<div>').addClass('ufo'))
             ufoSound()
         }
+
         setTimeout(createUfo, $randomUFO);
 
         // Randomly drop dollar bonus (+200 points)
@@ -196,6 +202,7 @@ $(function () {
                 left: Math.floor((Math.random() * 100) + 1) + '%',
             }))
         }
+
         setTimeout(bonusWeapone, $randomWeapone)
 
 
@@ -206,12 +213,17 @@ $(function () {
 
     // Start game button
 
+    let playOrNo = 'play';
+
     $('#start-game').on('click', function () {
         $('.galaxy').removeClass('hide');
         $('.main-menu').css({
             display: 'none',
         });
-        stopMusic()
+        playOrNo = 'dontPlay';
+        console.log(playOrNo)
+        // playMusicY();
+        stopMusic();
         game()
     });
 
@@ -222,6 +234,8 @@ $(function () {
     const $secondUl = $('.main-menu .second-ul');
     const $table = $('.table');
     const $copyright = $('.copyright');
+    const $input = $('.input-first');
+    let $nickname = '';
 
     $('#settings').on('click', function () {
         $firstUl.addClass('hide');
@@ -244,10 +258,29 @@ $(function () {
         $firstUl.addClass('hide');
         $copyright.removeClass('hide');
     });
-    $('.copyright-button').on('click',function () {
+    $('.copyright-button').on('click', function () {
         $copyright.addClass('hide');
         $firstUl.removeClass('hide');
     });
+
+    // First input value (Nickname)
+
+    let $nick = $('.nickname');
+
+
+    $('#btn-nick').on('click',function () {
+        if($nick.val().length < 3 || $nick.val().length > 10) {
+            $('.input-first p').removeClass('hide');
+        } else {
+            $input.addClass('hide');
+            $firstUl.removeClass('hide');
+            playerNickName()
+        }
+    });
+    function playerNickName() {
+        const $nickname = $nick.val();
+        $('.nick span').text($nickname)
+    }
 
     // Sound Variables
 
@@ -258,26 +291,30 @@ $(function () {
     let $bulletSound = document.getElementById("audio");
     let $musicBtn = $('.music-on-off');
 
+    // Set 50% of volume at start
+
+    $myAudio.volume = 0.5;
+
     // Settings turn on or turn off background music
 
-    $musicBtn.on('click',function () {
-        if($myAudio.paused) {
+    $musicBtn.on('click', function () {
+        if ($myAudio.paused) {
             $myAudio.play();
-            $musicBtn.text('MUSIC ON').css('color','#60daaa')
+            $musicBtn.text('MUSIC ON').css('color', '#60daaa')
         } else {
             $myAudio.pause();
-            $musicBtn.text('MUSIC OFF').css('color','red')
+            $musicBtn.text('MUSIC OFF').css('color', 'red')
         }
     });
 
     // Settings change volume of music
 
-    $('.range').on('input',function () {
+    $('.range').on('input', function () {
         $myAudio.volume = $(this).val() / 100;
-        $clickSound.volume =  $(this).val() / 100;
-        $collectSound.volume =  $(this).val() / 100;
-        $UfoSound.volume =  $(this).val() / 100;
-        $bulletSound.volume =  $(this).val() / 100;
+        $clickSound.volume = $(this).val() / 100;
+        $collectSound.volume = $(this).val() / 100;
+        $UfoSound.volume = $(this).val() / 100;
+        $bulletSound.volume = $(this).val() / 100;
     });
 
     // Bullets sound
@@ -309,7 +346,8 @@ $(function () {
     function playClick() {
         $clickSound.play();
     }
-    $('button').on('click',playClick);
+
+    $('button').on('click', playClick);
 
     // Bonuses collect sound
 
@@ -317,4 +355,19 @@ $(function () {
         $collectSound.play();
     }
 
+    // function playMusicY() {
+    //     if(playOrNo === 'play'){
+    //         $(document).on('mousemove', function () {
+    //             console.log('play')
+    //             $myAudio.play()
+    //         })
+    //     } else if(playOrNo === 'dontPlay') {
+    //         $(document).on('mousemove', function () {
+    //             console.log('dont play')
+    //             $myAudio.pause()
+    //         })
+    //     }
+    // }
+
 });
+

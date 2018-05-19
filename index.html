@@ -6,6 +6,8 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
+          integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Space+Mono:400,700&amp;subset=latin-ext" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="js/app.js"></script>
@@ -32,19 +34,28 @@
 <audio src="sound/click.wav" id="audio-click"></audio>
 <audio src="sound/ufo.flac" id="audio-ufo"></audio>
 
-<audio autoplay loop id="music">
+<audio preload="metadata" autoplay loop id="music">
     <source src="sound/music.mp3" type="audio/mpeg">
     <source src="sound/music.ogg" type="audio/ogg">
 </audio>
 
 <div class="main-menu">
-    <video autoplay loop preload="metadata">
+    <video id="video" preload="metadata" autoplay loop muted>
         <source src="img/vid/World.mp4" type="video/mp4">
-        <source src="img/vid/World.ogg" type="video/ogg">
         <source src="img/vid/World.webm" type="video/webm">
         Twoja przeglądarka nie obsługuje wideo.
     </video>
-    <ul class="first-ul">
+    <div class="input-first">
+        <h3>Write your nickname:</h3>
+        <p class="hide">min. 3 / max. 10</p>
+        <div class="inputWithIcon">
+            <input type="text" placeholder="Your name" class="nickname">
+            <i class="fa fa-user fa-lg fa-fw" aria-hidden="true"></i>
+            <button id="btn-nick" class="draw">Submit</button>
+        </div>
+    </div>
+    <ul class="first-ul hide">
+        <li class="nick"><h3>Welcome <span></span></h3></li>
         <li>
             <button id="start-game" class="draw">Start Game</button>
         </li>
@@ -66,7 +77,8 @@
             <button class="draw">SOUND ON/OFF</button>
         </li>
         <li>
-            <button class="draw">Volume</button><br>
+            <button class="draw">Volume</button>
+            <br>
             <input type="range" class="range" value="50" maxlength="100">
         </li>
         <li>
