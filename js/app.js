@@ -150,6 +150,7 @@ $(function () {
                         $('.main-menu').css('display','flex');
                         $('.first-ul').addClass('hide');
                         $('.game-over').removeClass('hide');
+                        $('.nick-over span').text($('.input-first input').val())
                         $('.score-over span').text($scoreScore);
                         $('.stage-over span').text($stageScore);
                         document.getElementById("music").play();
@@ -384,6 +385,18 @@ $(function () {
         function collectSound() {
             $collectSound.play();
         }
+
+
+        // If nickname is written then show menu:
+
+
+    console.log($('.input-first input').val());
+        if($('.input-first input').val().length >= 3){
+            $('.nick span').text($('.input-first input').val())
+            $('.input-first').addClass('hide');
+            $('.first-ul').removeClass('hide');
+        }
+
 
 });
 
