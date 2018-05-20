@@ -30,7 +30,6 @@ input {
   border-radius: 50%;
   transform: rotate(360deg);
   animation: rotating 2s linear infinite;
-  border: 1px solid red;
 }
 .ship {
   background-image: url("../img/ship3.png");
@@ -49,7 +48,6 @@ input {
   position: absolute;
   border-radius: 50%;
   padding: -20px;
-  border: 1px solid red;
 }
 
 .bullet {
