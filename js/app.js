@@ -173,13 +173,12 @@ $(function () {
                     $('.timer').remove();
                     topPos -= 1;
                     moveAsteroid();
-                    collectSound();
+                    timerSound()
                 } else if (weapone.length > 0) {
                     $('.better-bullets').remove();
                     $bulletWidth += 3;
                     $bulletHeight += 2;
-                    collectSound();
-                    fire()
+                    weaponeReload();
                 }
             }
 
@@ -313,6 +312,8 @@ $(function () {
         let $UfoSound = document.getElementById("audio-ufo");
         let $bulletSound = document.getElementById("audio");
         let $earthDestroy = document.getElementById("audio-destroy");
+        let $weapone = document.getElementById('audio-weapone');
+        let $timer = document.getElementById('audio-timer');
         let $musicBtn = $('.music-on-off');
 
         // Set 50% of volume at start
@@ -386,17 +387,32 @@ $(function () {
             $collectSound.play();
         }
 
+        // Reload sound
+
+        function weaponeReload() {
+            $weapone.play()
+        }
+
+        // Timer sound
+
+    function timerSound() {
+        $timer.play()
+    }
+
 
         // If nickname is written then show menu:
 
-
-    console.log($('.input-first input').val());
         if($('.input-first input').val().length >= 3){
             $('.nick span').text($('.input-first input').val())
             $('.input-first').addClass('hide');
             $('.first-ul').removeClass('hide');
         }
 
+        $('.asteroid').each(function () {
+            $(this).css({
+                transform: 'rotate(360deg)'
+            })
+        })
 
 });
 
